@@ -1,0 +1,68 @@
+Char count in String
+
+import java.util.Scanner;
+
+public class Main{
+
+   public static void main(String[] args){
+
+           Scanner sc = new Scanner(System.in);
+           String str = sc.nextLine();
+
+           if(str.isEmpty()){
+            
+              System.out.println("Invalid String");
+              return;
+           }
+         
+           int[] freq = new int[26];
+           int[] index = new int[26];
+           Array.fill( index, -1);
+
+           // Count frequency and store first occurrence index
+           for(int i =0;i< str.length();i++){
+
+              char ch = str.charAt(i);
+              freq[ch -'a']++;
+              if(index[ch - 'a']-1){
+                index[ch - 'a']=i;
+
+              }
+
+           }
+
+           // Find most repeated character
+           char mostRepeted = '';
+           int maxFreq = 0;
+           for(int i =0;i<26;i++){
+
+               if(freq[i] > maxFreq){
+
+                    maxFreq = freq[i];
+                    mostRepeted = (char) (i + 'a');
+          
+               }    
+    
+         
+           } 
+
+           // Find first non-repeating character
+           char firstNonRepeating = '';
+           int minFreq = Integer.MAX_VALUE;
+           for(int i =0;i<26;i++){
+
+               if(freq[i] == 1 && index[i] < minFreq){
+
+                   minFreq = index[i];
+                   firstNonRepeating = (char) (ch - 'a');
+               }           
+
+           }
+            System.out.println("Most Repeated Character: " + mostRepeated + " (appears " + maxFreq + " times)");
+            System.out.println("First Non-Repeating Character: " + (firstNonRepeating == ' ' ? "None" : firstNonRepeating));
+            sc.close();
+
+   }
+
+
+}

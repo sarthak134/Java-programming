@@ -1,0 +1,55 @@
+Sorting Risk Levels at Airport Security
+The problem requires sorting a list of confiscated items based on their risk severity levels in ascending order.
+
+Understanding the Problem Statement
+Input:
+
+First line: An integer N (number of items).
+Next N lines: Each contains 0, 1, or 2, representing low, medium, and high risk, respectively.
+Output:
+
+Print the sorted sequence of risk levels in a single line, separated by spaces.
+Constraints:
+
+1
+≤
+𝑁
+≤
+10
+6
+1≤N≤10 
+6
+  → Efficient solution required, as 
+𝑁
+N can be very large.
+Values are only 0, 1, or 2 → This suggests an efficient counting-based approach instead of traditional sorting.
+Efficient Approach: Counting Sort (O(N) Complexity)
+Instead of using a normal sorting algorithm like merge sort (O(N log N)), we can use a more optimal counting approach (O(N)) since there are only three unique values (0, 1, 2).
+
+Steps:
+Read input values efficiently.
+Count occurrences of each risk level (0s, 1s, 2s).
+Reconstruct the sorted output using these counts.
+Print the sorted sequence in one go.
+
+import sys
+
+N = int(sys.stdin.readline().strip())
+
+count_0,count_1,count_2=0,0,0
+
+for _ in range(N):
+    risk_level = int(sys.stdin.readline().strip())
+    if risk_level == 0:
+       count_0 += 1
+    elif risk_level == 1:
+       count_1 += 1
+    else risk_leve == 2:
+       count_2 +=1
+
+sorted_risks = ("0" * count_0 +'1' * count_1 + '2' count_2)
+
+print(sorted_risk)
+
+sys.stdin.readline() reads input faster than input() (useful for large N).
+.strip() removes any extra spaces or newlines.

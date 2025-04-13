@@ -1,0 +1,54 @@
+Q3. we need to find number of pairs (i, j) (i and j can overlap), such that number Arri, Arr-j converted to string then added (string addition), then if the resulting number lies between x and yi then it is valid pair. find all such pairs (all, not only unique),
+
+E_{X} - n = 5 x = 20 y = 50 Arr = [2, 5, 7, 6, 3] String addition example - " 2 "+"7"="27"="27"->27 converted to int
+
+import java.util.Scanner;
+
+public class Main{
+
+    public static void main(String[] args){
+
+        Scanner sc = new Scanner(System.in);
+        
+         int n = sc.nextInt();
+         int x = sc.nextInt();
+         int y = sc.nextInt();
+         int arr[] = new int[n];
+
+         for(int i =0;i<n;i++){
+
+            arr[i] = sc.nextInt();
+        
+         }
+ 
+         int count = 0;
+         for(int i = 0;i < n;i++){
+            for(int j =0;j < n;j++){
+
+                  int num = Integer.parseInt("" + arr[i]+arr[j]);
+
+               if(num >= x && num <= y){
+
+                   System.out.println(num);
+                   count++;
+
+               }
+
+            }
+     
+
+         }
+
+         System.out.println(count);
+         sc.close();
+   
+    }
+
+}
+
+
+
+
+
+
+
